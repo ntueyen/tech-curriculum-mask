@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>罩不罩由你 — 國小科技議題融入教案示例與教學設計</title>
+  <meta name="description" content="國小五、六年級自然科學領域融入科技教育議題教案示例：罩不罩由你。由徐臺屏老師設計，涵蓋濾材探究、空氣清淨機數據交叉驗證與自製 Arduino 比較機實測。">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .badge { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold; }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; color: black; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- 頂部導航列 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <span class="p-2 bg-brand-600 text-white rounded-lg shadow-sm">
+            <i class="fa-solid fa-shield-virus text-lg"></i>
+          </span>
+          <div>
+            <h1 class="font-bold text-lg text-slate-900 leading-tight">罩不罩由你</h1>
+            <p class="text-xs text-slate-500">國小科技議題融入教案示例 • 自然科學領域</p>
+          </div>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+          <a href="#overview" class="hover:text-brand-600 transition">教案概覽</a>
+          <a href="#structure" class="hover:text-brand-600 transition">課程架構</a>
+          <a href="#unit1" class="hover:text-brand-600 transition">單元一：濾材種類</a>
+          <a href="#unit2" class="hover:text-brand-600 transition">單元二：清淨機驗證</a>
+          <a href="#unit3" class="hover:text-brand-600 transition">單元三：比較機實測</a>
+          <a href="#rubrics" class="hover:text-brand-600 transition">素養評量</a>
+          <a href="#download" class="hover:text-brand-600 transition">教材下載</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+          <a href="#download" class="inline-flex items-center px-3.5 py-1.5 rounded-lg text-xs font-medium bg-brand-600 text-white hover:bg-brand-700 shadow-sm transition">
+            <i class="fa-solid fa-file-pdf mr-1.5"></i> 下載 PDF
+          </a>
+          <a href="https://github.com/ntueyen/tech-curriculum-mask" target="_blank" rel="noopener" class="text-slate-600 hover:text-slate-900 p-2" title="GitHub 專案">
+            <i class="fa-brands fa-github text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero 英雄旗幟區 -->
+  <section class="relative bg-gradient-to-b from-brand-50/70 via-slate-50 to-slate-50 border-b border-slate-200 py-14 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-100 text-brand-800 rounded-full text-xs font-semibold mb-4">
+            <i class="fa-solid fa-seedling"></i> 108 課綱素養導向教學設計
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            罩不罩由你
+            <span class="block text-xl sm:text-2xl font-normal text-brand-700 mt-2">市售濾材過濾懸浮微粒探究與比較機實作</span>
+          </h2>
+          <p class="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
+            面對環境空污與各式口罩宣傳，如何透過科學探究與科技工具找出真正有效的防護？
+            本教案引導國小高年級學童從日常生活情境出發，透過市售感測器與自組 Arduino 比較機，
+            動手量測、收集大數據、分析圖表，培養「系統思考」與「創新應變」的核心素養。
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <div class="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-sm text-sm text-slate-700">
+              <i class="fa-solid fa-user-graduate text-brand-600"></i>
+              <span>對象：<strong>國小五、六年級</strong></span>
+            </div>
+            <div class="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-sm text-sm text-slate-700">
+              <i class="fa-solid fa-clock text-brand-600"></i>
+              <span>時數：<strong>5~8 節 (200~320分)</strong></span>
+            </div>
+            <div class="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-sm text-sm text-slate-700">
+              <i class="fa-solid fa-chalkboard-user text-brand-600"></i>
+              <span>教案設計：<strong>徐臺屏 老師</strong></span>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#structure" class="px-5 py-2.5 bg-brand-600 text-white font-medium rounded-xl hover:bg-brand-700 shadow-md transition flex items-center">
+              <i class="fa-solid fa-book-open mr-2"></i> 瀏覽完整課程
+            </a>
+            <a href="#rubrics" class="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 font-medium rounded-xl hover:bg-slate-100 shadow-sm transition flex items-center">
+              <i class="fa-solid fa-clipboard-check mr-2"></i> 評量規準 (Rubrics)
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-200/80">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center justify-between">
+              <span><i class="fa-solid fa-compass text-brand-600 mr-2"></i>課程亮點與架構</span>
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded">雙軌彈性實施</span>
+            </h3>
+
+            <div class="mt-4 space-y-4">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-brand-300 transition">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="font-semibold text-slate-900 text-sm">單元一：濾材種類與功能</span>
+                  <span class="text-xs bg-teal-100 text-teal-800 px-2 py-0.5 rounded font-medium">2節 / 80分</span>
+                </div>
+                <p class="text-xs text-slate-600">生活情境導入（口罩/清淨機）、點香氣流實驗、初步觀測各類濾材效能。</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-brand-300 transition">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="font-semibold text-slate-900 text-sm">單元二：科學數據交叉驗證</span>
+                  <span class="text-xs bg-teal-100 text-teal-800 px-2 py-0.5 rounded font-medium">3節 / 120分</span>
+                </div>
+                <p class="text-xs text-slate-600">密閉空間市售清淨機實測、懸浮微粒濃度 20 次取樣、Excel 折線圖交叉分析。</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-brand-50/60 border border-brand-200">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="font-semibold text-brand-900 text-sm">單元三：比較機實測過濾效能 (進階)</span>
+                  <span class="text-xs bg-brand-600 text-white px-2 py-0.5 rounded font-medium">3節 / 120分</span>
+                </div>
+                <p class="text-xs text-brand-800">Arduino UNO + 攀藤 PMS5003 + 風速 PWM 變因控制，打造自動化濾材實測器！</p>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span><i class="fa-solid fa-coins mr-1 text-amber-500"></i> 每組教材成本 &lt; NT$ 1,000</span>
+              <span><i class="fa-solid fa-check-double mr-1 text-emerald-600"></i> 易推廣跨校無痛導入</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 主內容區 -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <!-- 左側側邊導航（Desktop 黏貼式） -->
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-24 bg-white rounded-xl border border-slate-200 p-4 shadow-sm text-sm">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">章節快速跳轉</p>
+          <ul class="space-y-2">
+            <li><a href="#overview" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">1. 教案概述與素養綱要</a></li>
+            <li><a href="#equipment" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">2. 教學設備與先備知識</a></li>
+            <li><a href="#structure" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">3. 課程設計架構</a></li>
+            <li><a href="#unit1" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">4. 單元一：濾材種類與功能</a></li>
+            <li><a href="#unit2" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">5. 單元二：數據交叉驗證</a></li>
+            <li><a href="#unit3" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">6. 單元三：比較機實測效能</a></li>
+            <li><a href="#rubrics" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">7. 素養導向評量檢核表</a></li>
+            <li><a href="#feedback" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">8. 教學成果與教師省思</a></li>
+            <li><a href="#download" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">9. 原始 PDF 與教材下載</a></li>
+          </ul>
+
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <p class="text-xs text-slate-400 mb-2">線上專案庫</p>
+            <a href="https://github.com/ntueyen/tech-curriculum-mask" target="_blank" class="inline-flex items-center text-xs text-brand-600 hover:underline">
+              <i class="fa-brands fa-github mr-1"></i> ntueyen/tech-curriculum-mask
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 右側主體內容 -->
+      <div class="lg:col-span-9 space-y-12">
+
+        <!-- 1. 教案概述與素養綱要 -->
+        <section id="overview" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="w-2.5 h-8 bg-brand-600 rounded-full"></span>
+            <h3 class="text-2xl font-bold text-slate-900">一、教案概述與課程綱要對應</h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <h4 class="font-bold text-slate-900 text-sm mb-2 flex items-center">
+                <i class="fa-solid fa-graduation-cap text-brand-600 mr-2"></i> 總綱核心素養
+              </h4>
+              <ul class="text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+                <li><strong>A2 系統思考與解決問題</strong>：能運用好奇心及想像能力，從觀察與數據中提出問題並理解科學事實。</li>
+                <li><strong>A3 規劃執行與創新應變</strong>：具備透過實地探究探索科學問題能力，操作科技設備進行實驗。</li>
+              </ul>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <h4 class="font-bold text-slate-900 text-sm mb-2 flex items-center">
+                <i class="fa-solid fa-microscope text-brand-600 mr-2"></i> 領綱核心素養
+              </h4>
+              <ul class="text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+                <li><strong>自-E-A2</strong>：從資訊或數據中提出科學探究問題或解釋資料。</li>
+                <li><strong>自-E-A3</strong>：規劃簡單步驟，操作適合的器材設備進行實驗。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                  <th class="py-2.5 px-4 font-semibold">類別</th>
+                  <th class="py-2.5 px-4 font-semibold">指標代碼</th>
+                  <th class="py-2.5 px-4 font-semibold">指標內容</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-slate-600">
+                <tr>
+                  <td class="py-2.5 px-4 font-medium text-slate-900 whitespace-nowrap">學習表現</td>
+                  <td class="py-2.5 px-4 font-mono text-xs text-brand-700">pa-Ⅲ-1</td>
+                  <td class="py-2.5 px-4">能分析比較、製作圖表、運用簡單數學等方法，整理已有的資訊或數據。</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 font-medium text-slate-900 whitespace-nowrap">學習表現</td>
+                  <td class="py-2.5 px-4 font-mono text-xs text-brand-700">pe-Ⅲ-2</td>
+                  <td class="py-2.5 px-4">能正確安全操作適合學習階段的器材設備與資源，進行客觀質性觀測或數值量測並詳實記錄。</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 font-medium text-slate-900 whitespace-nowrap">學習表現</td>
+                  <td class="py-2.5 px-4 font-mono text-xs text-brand-700">tr-Ⅲ-1</td>
+                  <td class="py-2.5 px-4">能將自己及他人所觀察、記錄的現象與知識互相連結，察覺關係並提出想法。</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 font-medium text-slate-900 whitespace-nowrap">學習內容</td>
+                  <td class="py-2.5 px-4 font-mono text-xs text-amber-700">INc-Ⅲ-1</td>
+                  <td class="py-2.5 px-4">生活及探究中常用的測量工具和方法。</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 font-medium text-slate-900 whitespace-nowrap">學習內容</td>
+                  <td class="py-2.5 px-4 font-mono text-xs text-amber-700">INc-Ⅲ-4</td>
+                  <td class="py-2.5 px-4">對相同事物做多次測量，結果間可能有差異，差異越大表示測量越不精確。</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 font-medium text-slate-900 whitespace-nowrap">學習內容</td>
+                  <td class="py-2.5 px-4 font-mono text-xs text-amber-700">INd-Ⅲ-2</td>
+                  <td class="py-2.5 px-4">人類可以控制各種因素來影響改變，改變前後差異可被觀察，快慢可被測量與了解。</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 font-medium text-slate-900 whitespace-nowrap">學習內容</td>
+                  <td class="py-2.5 px-4 font-mono text-xs text-amber-700">INf-Ⅲ-2</td>
+                  <td class="py-2.5 px-4">科技在生活中的應用與對環境與人體的影響。</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 font-medium text-slate-900 whitespace-nowrap">議題實質內涵</td>
+                  <td class="py-2.5 px-4 font-mono text-xs text-indigo-700">科 E1 / 科 E4</td>
+                  <td class="py-2.5 px-4">了解常見科技產品用途運作方式；體會動手實作樂趣，養成正向科技態度。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 2. 教學設備與先備知識 -->
+        <section id="equipment" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="w-2.5 h-8 bg-brand-600 rounded-full"></span>
+            <h3 class="text-2xl font-bold text-slate-900">二、教學設備需求與先備知識</h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 基礎型 -->
+            <div class="border border-slate-200 rounded-xl p-5 bg-gradient-to-br from-white to-slate-50">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+                <h4 class="font-bold text-slate-900 flex items-center">
+                  <span class="w-3 h-3 rounded-full bg-teal-500 mr-2"></span> 基礎型 (單元一 + 單元二)
+                </h4>
+                <span class="text-xs bg-teal-100 text-teal-800 px-2 py-0.5 rounded font-medium">5 節 / 200 分鐘</span>
+              </div>
+
+              <div class="space-y-3 text-sm">
+                <div>
+                  <p class="font-semibold text-slate-800 text-xs uppercase tracking-wider text-slate-500 mb-1">教學設備材料</p>
+                  <ul class="list-disc list-inside text-slate-600 space-y-1 text-xs">
+                    <li>線香、打火機（安全燻香微粒源）</li>
+                    <li>護目鏡、防護手套</li>
+                    <li>各式濾材（HEPA、活性碳、醫療口罩、N95、靜電濾網）</li>
+                    <li>市售懸浮微粒感測器【建議型號：阿格瑞斯 WP6910】</li>
+                    <li>市售空氣清淨機【型號不拘】</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-800 text-xs uppercase tracking-wider text-slate-500 mb-1">學生先備知識</p>
+                  <ul class="list-disc list-inside text-slate-600 space-y-1 text-xs">
+                    <li>會使用打火機點燃與安全熄滅線香</li>
+                    <li>正確配戴護目鏡與手套保護安全</li>
+                    <li>理解複合單位意義（例如速率 5 km/hr）</li>
+                    <li>能辨讀折線圖縱橫軸並以 Excel 將數據轉換為折線圖</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-800 text-xs uppercase tracking-wider text-slate-500 mb-1">教室空間</p>
+                  <p class="text-xs text-slate-600">普通教室即可，課桌椅形式不拘。</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 進階型 -->
+            <div class="border border-brand-200 rounded-xl p-5 bg-gradient-to-br from-white to-brand-50/40">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+                <h4 class="font-bold text-brand-900 flex items-center">
+                  <span class="w-3 h-3 rounded-full bg-brand-600 mr-2"></span> 進階型 (基礎型 + 單元三)
+                </h4>
+                <span class="text-xs bg-brand-600 text-white px-2 py-0.5 rounded font-medium">8 節 / 320 分鐘</span>
+              </div>
+
+              <div class="space-y-3 text-sm">
+                <div>
+                  <p class="font-semibold text-slate-800 text-xs uppercase tracking-wider text-slate-500 mb-1">增補硬體設備</p>
+                  <ul class="list-disc list-inside text-slate-600 space-y-1 text-xs">
+                    <li>Arduino UNO 開發板 + V5 Shield 擴充板</li>
+                    <li>攀藤 G5_PMS5003 雷射懸浮微粒感測器</li>
+                    <li>直流散熱風扇（50mm × 50mm）</li>
+                    <li>可變電阻、按鈕模組、1602 LCD 液晶顯示器</li>
+                    <li>風速測速儀【GM816】、原木板材機箱</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-800 text-xs uppercase tracking-wider text-slate-500 mb-1">學生先備知識</p>
+                  <ul class="list-disc list-inside text-slate-600 space-y-1 text-xs">
+                    <li>學習過圖像化程式語言（如 Scratch）</li>
+                    <li>理解結構化程式設計【循序、選擇、重複結構】意義</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-800 text-xs uppercase tracking-wider text-slate-500 mb-1">教室空間</p>
+                  <p class="text-xs text-slate-600">建議在實驗桌或創客工作桌教室，每桌容納 6 人分組操作討論。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. 課程設計架構圖 -->
+        <section id="structure" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="w-2.5 h-8 bg-brand-600 rounded-full"></span>
+            <h3 class="text-2xl font-bold text-slate-900">三、課程架構與學習地圖</h3>
+          </div>
+
+          <div class="relative pl-6 border-l-2 border-brand-200 space-y-8">
+            <!-- 節點 1 -->
+            <div class="relative">
+              <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-brand-600 border-4 border-white shadow"></span>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <span class="text-xs font-bold text-brand-700 bg-brand-100 px-2 py-0.5 rounded">第 1~2 節</span>
+                <h4 class="font-bold text-slate-900 text-base mt-1">單元一：濾材的種類與功能</h4>
+                <p class="text-sm text-slate-600 mt-1">
+                  從疫情與日常空污情境切入，認識生活中各種濾材，動手利用線香與市售感測器實測初步過濾效能，發現簡易量測的誤差與挑戰。
+                </p>
+              </div>
+            </div>
+
+            <!-- 節點 2 -->
+            <div class="relative">
+              <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-brand-600 border-4 border-white shadow"></span>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <span class="text-xs font-bold text-teal-700 bg-teal-100 px-2 py-0.5 rounded">第 3~5 節</span>
+                <h4 class="font-bold text-slate-900 text-base mt-1">單元二：科學數據交叉驗證</h4>
+                <p class="text-sm text-slate-600 mt-1">
+                  將濾材裝上市售空氣清淨機，在密閉教室進行標準化燻香，每 30 秒記錄一次濃度變化（共 20 次），並透過 Excel 折線圖交叉驗證濾材效能差異。
+                </p>
+              </div>
+            </div>
+
+            <!-- 節點 3 -->
+            <div class="relative">
+              <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-indigo-600 border-4 border-white shadow"></span>
+              <div class="bg-indigo-50/60 p-4 rounded-xl border border-indigo-200">
+                <span class="text-xs font-bold text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded">第 6~8 節 (進階)</span>
+                <h4 class="font-bold text-indigo-950 text-base mt-1">單元三：比較機實測過濾效能</h4>
+                <p class="text-sm text-indigo-900 mt-1">
+                  自組 Arduino + PMS5003 雙通道比較機，控制風速變因（2.0 m/s vs 3.8 m/s），精準測量 PM10、PM2.5 及 PM1，克服環境干擾並實踐動手造物。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. 單元一詳細活動步驟 -->
+        <section id="unit1" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-3">
+              <span class="w-2.5 h-8 bg-brand-600 rounded-full"></span>
+              <h3 class="text-2xl font-bold text-slate-900">單元一：濾材的種類與功能</h3>
+            </div>
+            <span class="badge bg-slate-100 text-slate-700">共 2 節 / 80 分鐘</span>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6 text-sm">
+            <p class="text-slate-700"><strong>核心學習目標：</strong></p>
+            <ul class="list-disc list-inside text-slate-600 mt-1 space-y-1">
+              <li>1-1 能理解濾材在日常生活的應用，動手簡易量測濾材過濾懸浮微粒的效能。</li>
+              <li>1-2 能觀察、紀錄濾材過濾的過程與數據，並將數據轉換成 Excel 統計圖表進行分析比較。</li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <div class="p-4 rounded-xl bg-white border border-slate-200">
+              <h5 class="font-bold text-slate-900 text-sm mb-2 text-brand-700">階段一：生活情境導入 (What)</h5>
+              <p class="text-sm text-slate-600">
+                引導學生思考與發表：冷氣機、除濕機、清淨機、吸塵器與醫療口罩為什麼都有濾材？
+                播放新聞影片《高醫禁布製、活性碳口罩 勸導拿掉口罩套》，探討市售各式宣稱與真實防護效果的差異。
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white border border-slate-200">
+              <h5 class="font-bold text-slate-900 text-sm mb-2 text-brand-700">階段二：動手做與問題解決 (Hands-on)</h5>
+              <ol class="list-decimal list-inside text-sm text-slate-600 space-y-2">
+                <li>學生穿戴護目鏡與手套，確保實驗安全。</li>
+                <li>將懸浮微粒感測器放置在各濾材上方，利用點燃線香產生的熱上升氣流導入煙霧。</li>
+                <li>分組記錄各濾材（HEPA、活性碳、醫療口罩、N95）讀數變化。</li>
+              </ol>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white border border-slate-200">
+              <h5 class="font-bold text-slate-900 text-sm mb-2 text-brand-700">階段三：困難發現與改進 (How)</h5>
+              <p class="text-sm text-slate-600">
+                引導學生反思：開放環境下的手工簡易平台，數據浮動過大、容易受空氣對流干擾。該如何改善？
+                以此為引子，帶出單元二「密閉環境測試」與單元三「定速抽風比較機」的必要性。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. 單元二詳細活動步驟 -->
+        <section id="unit2" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-3">
+              <span class="w-2.5 h-8 bg-brand-600 rounded-full"></span>
+              <h3 class="text-2xl font-bold text-slate-900">單元二：科學數據交叉驗證</h3>
+            </div>
+            <span class="badge bg-slate-100 text-slate-700">共 3 節 / 120 分鐘</span>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6 text-sm">
+            <p class="text-slate-700"><strong>核心學習目標：</strong></p>
+            <ul class="list-disc list-inside text-slate-600 mt-1 space-y-1">
+              <li>2-1 能透過市售空氣清淨機分析濾材過濾數據的差異。</li>
+              <li>2-2 能理解科技工具幫助人類改善生活，提升生活品質。</li>
+            </ul>
+          </div>
+
+          <div class="bg-amber-50/60 border border-amber-200 rounded-xl p-4 mb-4 text-xs text-amber-800">
+            <i class="fa-solid fa-triangle-exclamation mr-1 text-amber-600"></i>
+            <strong>嚴謹實驗控制：</strong> 門窗緊閉打造密閉空間，教室前後各設 1 台感測器（WP6910），燻香讓 PM2.5 濃度皆達 150 μg/m³ 以上再啟動清淨機。
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div class="bg-white p-4 rounded-xl border border-slate-200">
+              <h5 class="font-bold text-slate-900 text-sm mb-2 text-teal-700">量測與取樣程序</h5>
+              <p class="text-slate-600 text-xs leading-relaxed">
+                每次運轉過濾 10 分鐘，每隔 30 秒記錄一次 PM2.5 讀數，完整取得 20 筆連續數據。
+                更換不同濾材重複此標準流程，確保不同材質間的比較具有控制變因。
+              </p>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200">
+              <h5 class="font-bold text-slate-900 text-sm mb-2 text-teal-700">數據轉化與統計分析</h5>
+              <p class="text-slate-600 text-xs leading-relaxed">
+                引導學生開啟 Excel，將 20 筆連續數據繪製成「時間-微粒濃度」折線圖。
+                觀察斜率（下降快慢）與最終殘留濃度，客觀評斷各濾材的過濾速率與容塵表現。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. 單元三詳細活動步驟 -->
+        <section id="unit3" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-3">
+              <span class="w-2.5 h-8 bg-indigo-600 rounded-full"></span>
+              <h3 class="text-2xl font-bold text-slate-900">單元三：比較機實測過濾效能 (進階創客)</h3>
+            </div>
+            <span class="badge bg-indigo-100 text-indigo-800">共 3 節 / 120 分鐘</span>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6 text-sm">
+            <p class="text-slate-700"><strong>核心學習目標：</strong></p>
+            <ul class="list-disc list-inside text-slate-600 mt-1 space-y-1">
+              <li>3-1 能透過比較機進行實測，比較分析各種濾材不同的過濾效能。</li>
+              <li>3-2 能認識風速，透過實驗分析出不同風速對於濾材過濾效能的影響。</li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="text-xs font-semibold text-brand-700">硬體核心</span>
+              <h5 class="font-bold text-slate-900 text-sm mt-1">Arduino UNO + PMS5003</h5>
+              <p class="text-xs text-slate-600 mt-1">雷射散射法偵測通道內 PM1、PM2.5、PM10 粒子濃度，精準讀取。</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="text-xs font-semibold text-brand-700">人機介面</span>
+              <h5 class="font-bold text-slate-900 text-sm mt-1">1602 LCD + 按鈕</h5>
+              <p class="text-xs text-slate-600 mt-1">即時顯示目前濃度數值與工作狀態，支援數據校正與重設。</p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="text-xs font-semibold text-brand-700">變因控制</span>
+              <h5 class="font-bold text-slate-900 text-sm mt-1">PWM 風扇風速控制</h5>
+              <p class="text-xs text-slate-600 mt-1">設定 2.0 m/s 與 3.8 m/s 二段固定風速，探討流速對過濾穿透的影響。</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm">
+            <h5 class="font-bold text-slate-900 mb-2">關鍵實測成果發現：</h5>
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs text-left">
+                <thead class="bg-slate-200 text-slate-700 font-semibold">
+                  <tr>
+                    <th class="py-2 px-3">濾材種類</th>
+                    <th class="py-2 px-3">PM10 過濾效能</th>
+                    <th class="py-2 px-3">PM2.5 過濾效能</th>
+                    <th class="py-2 px-3">PM1 過濾效能</th>
+                    <th class="py-2 px-3">總體表現與建議</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 text-slate-700">
+                  <tr class="bg-emerald-50/50">
+                    <td class="py-2 px-3 font-semibold text-emerald-900">HEPA 4cm / 2cm</td>
+                    <td class="py-2 px-3 text-emerald-700">優良 (98%+)</td>
+                    <td class="py-2 px-3 text-emerald-700">優良 (95%+)</td>
+                    <td class="py-2 px-3 text-emerald-700">優良 (90%+)</td>
+                    <td class="py-2 px-3">摺疊層數多、容塵量高，全粒徑防護最佳</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-3 font-semibold text-slate-900">N95 口罩</td>
+                    <td class="py-2 px-3">優良</td>
+                    <td class="py-2 px-3">良好</td>
+                    <td class="py-2 px-3">中等</td>
+                    <td class="py-2 px-3">密合度高時表現優異，高阻力需搭配強風壓</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-3 font-semibold text-slate-900">醫療口罩</td>
+                    <td class="py-2 px-3">良好</td>
+                    <td class="py-2 px-3">中等</td>
+                    <td class="py-2 px-3 text-rose-600 font-semibold">極差 (&lt;30%)</td>
+                    <td class="py-2 px-3">針對飛沫大顆粒有效，微細粒子穿透率高</td>
+                  </tr>
+                  <tr class="bg-rose-50/40">
+                    <td class="py-2 px-3 font-semibold text-slate-900">活性碳 / 靜電網</td>
+                    <td class="py-2 px-3">中等</td>
+                    <td class="py-2 px-3 text-rose-600">差</td>
+                    <td class="py-2 px-3 text-rose-600 font-semibold">極差</td>
+                    <td class="py-2 px-3">活性碳主攻異味與VOC吸附，非粒狀微粒主防線</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. 素養導向評量檢核表 (Rubrics) -->
+        <section id="rubrics" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="w-2.5 h-8 bg-brand-600 rounded-full"></span>
+            <h3 class="text-2xl font-bold text-slate-900">七、素養導向教學評量檢核表 (A~E 五級等第)</h3>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                  <th class="py-3 px-3 font-semibold w-12 text-center">單元</th>
+                  <th class="py-3 px-4 font-semibold w-48">評量目標</th>
+                  <th class="py-3 px-3 font-semibold bg-emerald-50 text-emerald-900">A 級 (精熟優異)</th>
+                  <th class="py-3 px-3 font-semibold bg-teal-50 text-teal-900">B 級 (熟練掌握)</th>
+                  <th class="py-3 px-3 font-semibold bg-sky-50 text-sky-900">C 級 (基礎理解)</th>
+                  <th class="py-3 px-3 font-semibold bg-amber-50 text-amber-900">D 級 (部分理解)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 text-slate-700">
+                <tr>
+                  <td class="py-3 px-3 text-center font-bold text-slate-900 bg-slate-50">單元一</td>
+                  <td class="py-3 px-4 font-medium text-slate-900">濾材應用與簡易量測</td>
+                  <td class="py-3 px-3 bg-emerald-50/40">能分析濾材種類與過濾懸浮微粒效能相關性，並應用於其他任務。</td>
+                  <td class="py-3 px-3 bg-teal-50/40">能理解濾材種類與效能相關性（如靜電濾網吸附原理）。</td>
+                  <td class="py-3 px-3 bg-sky-50/40">能知道濾材種類與效能相關性。</td>
+                  <td class="py-3 px-3 bg-amber-50/40">能部分知道濾材種類與效能相關性。</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-3 text-center font-bold text-slate-900 bg-slate-50">單元一</td>
+                  <td class="py-3 px-4 font-medium text-slate-900">Excel 統計圖表分析</td>
+                  <td class="py-3 px-3 bg-emerald-50/40">能透過科技工具深入分析數據（如微粒降低量與容塵量關聯），並遷移應用。</td>
+                  <td class="py-3 px-3 bg-teal-50/40">能透過工具分析固定時間內的微粒降低量與效果。</td>
+                  <td class="py-3 px-3 bg-sky-50/40">能知道數值所代表的物理意義（如 PM1 濃度）。</td>
+                  <td class="py-3 px-3 bg-amber-50/40">能部分知道過濾過程數據意義。</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-3 text-center font-bold text-slate-900 bg-slate-50">單元二</td>
+                  <td class="py-3 px-4 font-medium text-slate-900">清淨機數據差異比較</td>
+                  <td class="py-3 px-3 bg-emerald-50/40">能舉例說明濾材過濾數據差異，且能遷移應用於其他真實生活任務。</td>
+                  <td class="py-3 px-3 bg-teal-50/40">能知道且舉例說明濾材過濾數據差異。</td>
+                  <td class="py-3 px-3 bg-sky-50/40">能知道濾材過濾的數據差異。</td>
+                  <td class="py-3 px-3 bg-amber-50/40">能部分知道濾材過濾的數據差異。</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-3 text-center font-bold text-indigo-900 bg-indigo-50">單元三</td>
+                  <td class="py-3 px-4 font-medium text-slate-900">風速對過濾效能影響</td>
+                  <td class="py-3 px-3 bg-emerald-50/40">能深入分析風速對過濾效能影響（如風速越大，單位時間懸浮微粒越多）。</td>
+                  <td class="py-3 px-3 bg-teal-50/40">能理解風速與濾材容塵量交互影響過濾效能。</td>
+                  <td class="py-3 px-3 bg-sky-50/40">能知道風速會影響比較機的過濾效果。</td>
+                  <td class="py-3 px-3 bg-amber-50/40">能部分知道風速對於效能的影響。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-slate-500 mt-3">* 學生表現未達 D 級標準者標示為 E 級，由教師給予個別化引導補救。</p>
+        </section>
+
+        <!-- 8. 教學成果與教師省思 -->
+        <section id="feedback" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center space-x-3 mb-6">
+            <span class="w-2.5 h-8 bg-brand-600 rounded-full"></span>
+            <h3 class="text-2xl font-bold text-slate-900">八、教學成果、反思與推廣特色</h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <h5 class="font-bold text-slate-900 text-sm mb-1 text-brand-700">1. 環扣真實生活情境</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  教學目標非抽象學理，而是引領學生動手解決霧霾與室內空氣品質問題，提供學生 50% 以上創作延伸性，培育批判思考與創意思維。
+                </p>
+              </div>
+
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <h5 class="font-bold text-slate-900 text-sm mb-1 text-brand-700">2. 低門檻教材，極易推廣</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  全套非商業專屬套裝教具，單晶片、風扇、板材與感測器材料成本每組新台幣 1,000 元以下，兼顧城鄉差距、偏鄉與非山非市學校，教師皆能無痛複製導入。
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <h5 class="font-bold text-slate-900 text-sm mb-1 text-brand-700">3. 強調「做、用、想」學習體驗</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  以「問思互動」引導，讓學生在操作中發現數據異常（例如簡易量測誤差），進而自發性想要改良工具，自然涵育 AI 與物聯網探究精神。
+                </p>
+              </div>
+
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <h5 class="font-bold text-slate-900 text-sm mb-1 text-brand-700">4. 多元評量與教學滾動修正</h5>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  結合歷程性觀察與總結性作品，素養導向檢核表跳脫傳統紙筆背誦，實踐力行評量，讓教學具備高度可複製性。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. 原始 PDF 與教材下載 -->
+        <section id="download" class="bg-gradient-to-r from-brand-700 to-teal-800 text-white rounded-2xl p-6 sm:p-8 shadow-lg">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <span class="inline-block px-2.5 py-0.5 rounded text-xs font-semibold bg-white/20 mb-2">公開資源</span>
+              <h3 class="text-2xl font-bold">教案設計計畫書完整 PDF</h3>
+              <p class="text-sm text-teal-100 mt-1 max-w-xl">
+                包含 23 頁完整文字、學習單、活動紀錄表與詳細硬體組裝指引，提供教育工作者自由下載與教學參考。
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <a href="國小科技議題融入教案示例-徐臺屏-罩不罩由你.pdf" download class="px-5 py-3 bg-white text-brand-800 font-bold rounded-xl shadow-md hover:bg-teal-50 transition flex items-center">
+                <i class="fa-solid fa-download mr-2"></i> 下載完整 PDF
+              </a>
+              <a href="https://github.com/ntueyen/tech-curriculum-mask" target="_blank" rel="noopener" class="px-5 py-3 bg-brand-900/60 border border-white/30 text-white font-medium rounded-xl hover:bg-brand-900 transition flex items-center">
+                <i class="fa-brands fa-github mr-2"></i> GitHub 原始碼
+              </a>
+            </div>
+          </div>
+
+          <!-- PDF 內嵌預覽視窗 -->
+          <div class="mt-8 bg-white/10 rounded-xl p-2 border border-white/20">
+            <p class="text-xs text-teal-100 px-2 py-1 mb-2 font-medium flex items-center">
+              <i class="fa-regular fa-file-pdf mr-1.5"></i> 線上預覽視窗（若瀏覽器不支援嵌入，請使用上方下載按鈕）：
+            </p>
+            <div class="w-full h-96 bg-slate-900/40 rounded-lg overflow-hidden flex items-center justify-center">
+              <iframe src="國小科技議題融入教案示例-徐臺屏-罩不罩由你.pdf" class="w-full h-full border-0" title="教案 PDF 預覽"></iframe>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 mt-16 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+      <p class="font-medium text-slate-300">國小科技議題融入教案示例 —《罩不罩由你》</p>
+      <p class="text-xs text-slate-500">
+        教案設計：徐臺屏 老師 | 數位化與開源專案維護：<a href="https://github.com/ntueyen" target="_blank" class="hover:text-brand-400 underline">ntueyen</a>
+      </p>
+      <p class="text-xs text-slate-600">
+        本專案以開源授權公開，歡迎教育同儕教學引用與二次創作分享。
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
