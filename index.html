@@ -65,6 +65,7 @@
           <a href="#unit1" class="hover:text-brand-600 transition">單元一：濾材種類</a>
           <a href="#unit2" class="hover:text-brand-600 transition">單元二：清淨機驗證</a>
           <a href="#unit3" class="hover:text-brand-600 transition">單元三：比較機實測</a>
+          <a href="#game" class="text-amber-600 hover:text-amber-700 font-bold flex items-center gap-1 transition"><i class="fa-solid fa-gamepad"></i> 互動小遊戲</a>
           <a href="#rubrics" class="hover:text-brand-600 transition">素養評量</a>
           <a href="#download" class="hover:text-brand-600 transition">教材下載</a>
         </nav>
@@ -87,7 +88,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-7">
           <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-100 text-brand-800 rounded-full text-xs font-semibold mb-4">
-            <i class="fa-solid fa-seedling"></i> 108 課綱素養導向教學設計
+            <i class="fa-solid fa-graduation-cap"></i> Roger Yen老師的科技領域教材教法課程作業
           </div>
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
             罩不罩由你
@@ -115,6 +116,9 @@
           </div>
 
           <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#game" class="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-xl hover:from-amber-600 hover:to-orange-600 shadow-md transition flex items-center">
+              <i class="fa-solid fa-gamepad mr-2"></i> 進入互動小遊戲
+            </a>
             <a href="#structure" class="px-5 py-2.5 bg-brand-600 text-white font-medium rounded-xl hover:bg-brand-700 shadow-md transition flex items-center">
               <i class="fa-solid fa-book-open mr-2"></i> 瀏覽完整課程
             </a>
@@ -182,9 +186,10 @@
             <li><a href="#unit1" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">4. 單元一：濾材種類與功能</a></li>
             <li><a href="#unit2" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">5. 單元二：數據交叉驗證</a></li>
             <li><a href="#unit3" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">6. 單元三：比較機實測效能</a></li>
-            <li><a href="#rubrics" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">7. 素養導向評量檢核表</a></li>
-            <li><a href="#feedback" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">8. 教學成果與教師省思</a></li>
-            <li><a href="#download" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">9. 原始 PDF 與教材下載</a></li>
+            <li><a href="#game" class="block px-2.5 py-1.5 rounded-lg text-amber-800 bg-amber-50 hover:bg-amber-100 font-bold transition flex items-center"><i class="fa-solid fa-gamepad mr-1.5 text-amber-600"></i>7. 互動遊戲：濾材實驗室</a></li>
+            <li><a href="#rubrics" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">8. 素養導向評量檢核表</a></li>
+            <li><a href="#feedback" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">9. 教學成果與教師省思</a></li>
+            <li><a href="#download" class="block px-2.5 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition">10. 原始 PDF 與教材下載</a></li>
           </ul>
 
           <div class="mt-6 pt-4 border-t border-slate-100">
@@ -583,11 +588,777 @@
           </div>
         </section>
 
-        <!-- 7. 素養導向評量檢核表 (Rubrics) -->
+
+        <!-- 7. 互動小遊戲：空氣守護大作戰 (Air Defense Lab) -->
+        <section id="game" class="bg-gradient-to-br from-slate-900 via-slate-800 to-teal-950 text-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-teal-500/40 relative overflow-hidden">
+          <div class="absolute -right-16 -top-16 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- 遊戲頂部標題與模式切換 -->
+          <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-700/80 pb-6 mb-6">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/20 text-amber-300 rounded-full text-xs font-semibold mb-2 border border-amber-500/30">
+                <i class="fa-solid fa-gamepad"></i> 互動網頁探索遊戲 • 科技探究實作
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-black tracking-tight text-white flex items-center gap-2">
+                <span>空氣守護大作戰：自製比較機實驗室</span>
+              </h3>
+              <p class="text-sm text-slate-300 mt-1 max-w-2xl">
+                動手切換各式濾材與 PWM 風速變因，透過物理微粒穿透模擬與擬真 Arduino PMS5003 感測器，親眼見證不同粒徑懸浮微粒（PM10、PM2.5、PM1）的過濾奧秘！
+              </p>
+            </div>
+
+            <!-- 模式切換按鈕 -->
+            <div class="flex items-center bg-slate-800/90 p-1 rounded-xl border border-slate-700">
+              <button id="tab-btn-sim" onclick="switchGameTab('sim')" class="px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-teal-600 text-white shadow">
+                <i class="fa-solid fa-flask-vial"></i> 物理動態沙盒
+              </button>
+              <button id="tab-btn-quiz" onclick="switchGameTab('quiz')" class="px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-300 hover:text-white">
+                <i class="fa-solid fa-trophy"></i> 素養闖關挑戰
+              </button>
+            </div>
+          </div>
+
+          <!-- 模式一：比較機物理沙盒 -->
+          <div id="game-mode-sim" class="space-y-6 relative z-10">
+            <!-- 控制選項面板 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 bg-slate-800/80 p-5 rounded-xl border border-slate-700/80">
+              <!-- 濾材選擇 -->
+              <div class="lg:col-span-7 space-y-2">
+                <label class="text-xs font-bold text-teal-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <i class="fa-solid fa-filter"></i> 選擇安裝濾材 (Filter Type)
+                </label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="filter-buttons">
+                  <button onclick="selectFilter('hepa4')" class="filter-btn active-filter px-3 py-2 rounded-lg border text-left text-xs transition" data-id="hepa4">
+                    <p class="font-bold text-white">HEPA 4cm</p>
+                    <p class="text-[10px] text-teal-300">深層多摺疊 (容塵極佳)</p>
+                  </button>
+                  <button onclick="selectFilter('hepa2')" class="filter-btn px-3 py-2 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 text-left text-xs transition" data-id="hepa2">
+                    <p class="font-bold text-white">HEPA 2cm</p>
+                    <p class="text-[10px] text-slate-400">標準摺疊 (高效防護)</p>
+                  </button>
+                  <button onclick="selectFilter('n95')" class="filter-btn px-3 py-2 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 text-left text-xs transition" data-id="n95">
+                    <p class="font-bold text-white">N95 口罩</p>
+                    <p class="text-[10px] text-slate-400">高阻力緊密纖維</p>
+                  </button>
+                  <button onclick="selectFilter('mask')" class="filter-btn px-3 py-2 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 text-left text-xs transition" data-id="mask">
+                    <p class="font-bold text-white">一般醫療口罩</p>
+                    <p class="text-[10px] text-slate-400">單薄防飛沫 (微粒透穿)</p>
+                  </button>
+                  <button onclick="selectFilter('electro')" class="filter-btn px-3 py-2 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 text-left text-xs transition" data-id="electro">
+                    <p class="font-bold text-white">靜電濾網</p>
+                    <p class="text-[10px] text-slate-400">初效靜電吸附</p>
+                  </button>
+                  <button onclick="selectFilter('carbon')" class="filter-btn px-3 py-2 rounded-lg border border-slate-700 bg-slate-900/60 hover:border-slate-500 text-left text-xs transition" data-id="carbon">
+                    <p class="font-bold text-white">活性碳濾網</p>
+                    <p class="text-[10px] text-slate-400">吸附異味 (微粒弱)</p>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 風速與操作 -->
+              <div class="lg:col-span-5 flex flex-col justify-between space-y-3">
+                <div>
+                  <label class="text-xs font-bold text-teal-400 uppercase tracking-wider flex items-center gap-1.5 mb-2">
+                    <i class="fa-solid fa-fan"></i> PWM 風扇風速控制 (變因實驗)
+                  </label>
+                  <div class="grid grid-cols-2 gap-2">
+                    <button id="speed-btn-low" onclick="setWindSpeed(2.0)" class="speed-btn active-speed px-3 py-2 rounded-lg border text-xs font-bold transition flex items-center justify-center gap-1.5">
+                      <i class="fa-solid fa-gauge-simple"></i> 2.0 m/s (標準低速)
+                    </button>
+                    <button id="speed-btn-high" onclick="setWindSpeed(3.8)" class="speed-btn px-3 py-2 rounded-lg border border-slate-700 bg-slate-900/60 text-slate-400 hover:text-white text-xs font-bold transition flex items-center justify-center gap-1.5">
+                      <i class="fa-solid fa-gauge-high"></i> 3.8 m/s (強風抽吸)
+                    </button>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-1">
+                  <button id="btn-smoke" onclick="triggerSmoke()" class="flex-1 px-4 py-2.5 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white rounded-lg font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-fire-flame-curved"></i> 點燃線香燻煙
+                  </button>
+                  <button id="btn-toggle" onclick="toggleSimulation()" class="px-4 py-2.5 bg-teal-600 hover:bg-teal-500 text-white rounded-lg font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5">
+                    <i id="icon-toggle" class="fa-solid fa-pause"></i> 暫停/繼續
+                  </button>
+                  <button onclick="resetSimulation()" class="px-3 py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg font-medium text-xs transition" title="重設實驗">
+                    <i class="fa-solid fa-rotate-left"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Canvas 動畫主畫面 + 擬真 Arduino LCD 儀表板 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+              <!-- 左側：粒子飛行物理風道 Canvas -->
+              <div class="lg:col-span-8 bg-slate-950 rounded-xl border border-slate-700/80 p-3 shadow-inner relative">
+                <!-- 圖例指示 -->
+                <div class="flex flex-wrap items-center justify-between text-[11px] text-slate-400 mb-2 px-1">
+                  <div class="flex items-center gap-3">
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow"></span> PM10 (大顆粒 揚塵)</span>
+                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-cyan-400 shadow"></span> PM2.5 (細微粒 煙霧)</span>
+                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-purple-400 shadow"></span> PM1.0 (超微粒 油煙)</span>
+                  </div>
+                  <span class="text-teal-400 font-mono" id="sim-status-indicator">● 系統抽風中</span>
+                </div>
+
+                <!-- 畫布 -->
+                <canvas id="filter-canvas" width="680" height="240" class="w-full h-56 bg-slate-900 rounded-lg border border-slate-800 block"></canvas>
+
+                <!-- 風道標籤 -->
+                <div class="flex justify-between text-[10px] text-slate-500 mt-2 px-2 font-mono">
+                  <span>⬅ 進風口 (燻香微粒源)</span>
+                  <span class="text-teal-300 font-semibold">[ 濾材攔截面 ]</span>
+                  <span>排氣口 (PMS5003 偵測點) ➡</span>
+                </div>
+              </div>
+
+              <!-- 右側：擬真 Arduino 1602 LCD 螢幕與實測折線圖 -->
+              <div class="lg:col-span-4 space-y-3">
+                <!-- 1602 LCD 儀表板 -->
+                <div class="bg-emerald-950 border-4 border-slate-700 rounded-xl p-4 shadow-xl font-mono relative overflow-hidden">
+                  <div class="text-[10px] text-emerald-400/70 border-b border-emerald-800/60 pb-1 mb-2 flex justify-between items-center">
+                    <span>ARDUINO UNO + PMS5003</span>
+                    <span class="animate-pulse text-emerald-400">● REC</span>
+                  </div>
+                  <div class="text-emerald-300 text-xs space-y-1 select-none leading-relaxed tracking-wider">
+                    <div class="flex justify-between font-bold">
+                      <span>FILTER:</span>
+                      <span id="lcd-filter" class="text-white">HEPA 4CM</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>PM1.0 :</span>
+                      <span id="lcd-pm1" class="font-bold text-white">004 ug/m3</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>PM2.5 :</span>
+                      <span id="lcd-pm25" class="font-bold text-white">008 ug/m3</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>PM10  :</span>
+                      <span id="lcd-pm10" class="font-bold text-white">012 ug/m3</span>
+                    </div>
+                    <div class="pt-1 border-t border-emerald-800/60 flex justify-between font-bold text-emerald-200 text-sm">
+                      <span>CLEAN RATE:</span>
+                      <span id="lcd-eff" class="text-emerald-300">98%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 即時下降曲線 (Excel 折線圖體驗) -->
+                <div class="bg-slate-900/90 rounded-xl border border-slate-700 p-3">
+                  <div class="flex justify-between items-center text-xs text-slate-300 mb-1">
+                    <span class="font-semibold"><i class="fa-solid fa-chart-line text-teal-400 mr-1"></i> PM2.5 濃度歷程折線圖</span>
+                    <span class="text-[10px] text-slate-400 font-mono">取樣 20 點</span>
+                  </div>
+                  <canvas id="chart-canvas" width="280" height="80" class="w-full h-20 bg-slate-950 rounded border border-slate-800"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 科學原理解析提示卡片 -->
+            <div id="filter-explanation-card" class="bg-slate-800/70 border-l-4 border-teal-500 rounded-r-xl p-4 text-xs text-slate-300 leading-relaxed">
+              <strong class="text-teal-300 font-bold block mb-1 text-sm" id="expl-title">💡 濾材科學原理即時分析：</strong>
+              <p id="expl-text">HEPA 4cm 具備緻密的多層波浪摺疊結構，大幅增加容塵表面積與微粒停留碰撞機率，不管是大顆粒 PM10 還是穿透力極強的超微細 PM1，皆能達到 95% 以上頂級過濾水準！</p>
+            </div>
+          </div>
+
+          <!-- 模式二：素養闖關問答 -->
+          <div id="game-mode-quiz" class="hidden space-y-6 relative z-10">
+            <div class="bg-slate-800/90 rounded-2xl p-6 border border-slate-700">
+              <div class="flex items-center justify-between mb-4 border-b border-slate-700 pb-3">
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">
+                  <i class="fa-solid fa-circle-question mr-1"></i> 國小科技議題素養大考驗
+                </span>
+                <span class="text-xs bg-slate-700 text-slate-200 px-3 py-1 rounded-full font-mono" id="quiz-progress">
+                  關卡 1 / 4
+                </span>
+              </div>
+
+              <div id="quiz-card-container" class="space-y-4">
+                <!-- 動態注入題目 -->
+              </div>
+
+              <!-- 得分與回饋 -->
+              <div id="quiz-result-box" class="hidden mt-6 p-5 bg-gradient-to-r from-teal-900/60 to-slate-900 border border-teal-500/40 rounded-xl text-center space-y-3">
+                <div class="text-3xl">🎉</div>
+                <h4 class="text-xl font-black text-white" id="result-title">恭喜完成素養挑戰！</h4>
+                <p class="text-sm text-slate-300" id="result-desc">你的最終得分：100 分！獲得「A 級卓越素養徽章」！</p>
+                <button onclick="restartQuiz()" class="mt-3 px-5 py-2 bg-teal-600 hover:bg-teal-500 text-white font-bold rounded-lg text-xs shadow transition">
+                  <i class="fa-solid fa-rotate-right mr-1"></i> 再挑戰一次
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <style>
+          .active-filter {
+            background-color: rgba(13, 148, 136, 0.3) !important;
+            border-color: #14b8a6 !important;
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.3);
+          }
+          .active-speed {
+            background-color: #0d9488 !important;
+            border-color: #14b8a6 !important;
+            color: #ffffff !important;
+          }
+        </style>
+
+        <script>
+          // 濾材資料庫
+          const FILTER_DATA = {
+            hepa4: {
+              name: 'HEPA 4cm',
+              p10: 0.99, p25: 0.98, p1: 0.95,
+              color: '#10b981',
+              gridLines: 12,
+              title: 'HEPA 4cm 摺疊型濾材 (深層高效)',
+              desc: '具備極厚的多層波浪摺疊結構，容塵表面積極大，提供長路徑微粒碰撞吸附機制。實測對 PM10、PM2.5、PM1 全粒徑皆具有 95% 以上頂級過濾效能，是空氣清淨機最佳核心濾網！'
+            },
+            hepa2: {
+              name: 'HEPA 2cm',
+              p10: 0.98, p25: 0.95, p1: 0.90,
+              color: '#14b8a6',
+              gridLines: 8,
+              title: 'HEPA 2cm 摺疊型濾材 (標準高效)',
+              desc: '市售標準常見厚度，對 PM10 與 PM2.5 具極佳攔截率，超微細 PM1 亦具備 90% 防護力，平衡了風阻與過濾效能。'
+            },
+            n95: {
+              name: 'N95 口罩',
+              p10: 0.95, p25: 0.92, p1: 0.65,
+              color: '#38bdf8',
+              gridLines: 6,
+              title: 'N95 緊密防護口罩',
+              desc: '密合度極高，對大於 0.3 微米粒子具 95% 防護力，但風阻較大。在強烈抽風下，微細 PM1.0 仍有部分穿透現象。'
+            },
+            mask: {
+              name: '一般醫療口罩',
+              p10: 0.85, p25: 0.60, p1: 0.25,
+              color: '#a855f7',
+              gridLines: 4,
+              title: '一般醫療口罩 (飛沫防護)',
+              desc: '重要科學發現！醫療口罩主要功能在阻隔飛沫（約 5μm 以上）與大顆粒 PM10。對於小於 1 微米的油煙或二手煙微細粒子（PM1.0），穿透率超過 70%，無法替代專業空氣清淨機！'
+            },
+            electro: {
+              name: '靜電濾網',
+              p10: 0.75, p25: 0.45, p1: 0.20,
+              color: '#f59e0b',
+              gridLines: 4,
+              title: '靜電集塵濾網',
+              desc: '依賴表面靜電吸附顆粒，初期通風良好，但隨粉塵附著或高風速衝刷，靜電吸附效力容易顯著衰減，PM1 過濾效能極弱。'
+            },
+            carbon: {
+              name: '活性碳濾網',
+              p10: 0.50, p25: 0.30, p1: 0.15,
+              color: '#64748b',
+              gridLines: 3,
+              title: '活性碳顆粒濾網',
+              desc: '活性碳強項在於微孔吸附「氣體分子、異味與揮發性有機物 (VOC)」，而非粒狀懸浮微粒。單獨使用時，微粒攔截效能是所有受測濾材中最低的。'
+            }
+          };
+
+          // 模擬器狀態變數
+          let currentFilter = 'hepa4';
+          let windSpeed = 2.0;
+          let isRunning = true;
+          let particles = [];
+          let historyData = [180, 160, 140, 110, 90, 75, 55, 40, 30, 22, 16, 12, 10, 8];
+          let canvas, ctx;
+          let chartCanvas, chartCtx;
+          let animFrameId;
+
+          // 初始化畫布
+          function initSimulation() {
+            canvas = document.getElementById('filter-canvas');
+            if (!canvas) return;
+            ctx = canvas.getContext('2d');
+            chartCanvas = document.getElementById('chart-canvas');
+            chartCtx = chartCanvas ? chartCanvas.getContext('2d') : null;
+
+            // 預先生成一批粒子
+            spawnInitialParticles();
+            renderLoop();
+            drawChart();
+          }
+
+          function spawnInitialParticles() {
+            particles = [];
+            for (let i = 0; i < 40; i++) {
+              createParticle(Math.random() * (canvas.width * 0.45));
+            }
+          }
+
+          function createParticle(startX = 10) {
+            // 三種粒子型態機率分配
+            const rand = Math.random();
+            let type, color, size, radius;
+            if (rand < 0.3) {
+              type = 'pm10';
+              color = '#f59e0b'; // 橘黃
+              size = 'PM10';
+              radius = 5.5;
+            } else if (rand < 0.7) {
+              type = 'pm25';
+              color = '#38bdf8'; // 青藍
+              size = 'PM2.5';
+              radius = 3.5;
+            } else {
+              type = 'pm1';
+              color = '#c084fc'; // 紫色
+              size = 'PM1.0';
+              radius = 2.0;
+            }
+
+            particles.push({
+              x: startX,
+              y: 20 + Math.random() * (canvas.height - 40),
+              vx: (windSpeed * 1.3) + Math.random() * 0.8,
+              vy: (Math.random() - 0.5) * 0.6,
+              type: type,
+              color: color,
+              radius: radius,
+              blocked: false,
+              alpha: 1.0,
+              trappedAt: 0
+            });
+          }
+
+          function renderLoop() {
+            if (isRunning && canvas) {
+              updatePhysics();
+              drawScene();
+            }
+            animFrameId = requestAnimationFrame(renderLoop);
+          }
+
+          function updatePhysics() {
+            const filterX = canvas.width * 0.5;
+            const filterInfo = FILTER_DATA[currentFilter];
+
+            // 速度衰減係數 (高風速穿透率稍增)
+            const speedPenalty = windSpeed === 3.8 ? 0.08 : 0;
+
+            // 持續從左側補充粒子
+            if (Math.random() < (windSpeed === 3.8 ? 0.45 : 0.25)) {
+              createParticle(5);
+            }
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+              const p = particles[i];
+
+              if (!p.blocked) {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // 邊界反彈
+                if (p.y < 15 || p.y > canvas.height - 15) p.vy *= -1;
+
+                // 到達濾材中軸 (filterX)
+                if (p.x >= filterX - 4 && p.x <= filterX + 4) {
+                  let blockRate = 0;
+                  if (p.type === 'pm10') blockRate = filterInfo.p10;
+                  else if (p.type === 'pm25') blockRate = Math.max(0.1, filterInfo.p25 - speedPenalty);
+                  else if (p.type === 'pm1') blockRate = Math.max(0.05, filterInfo.p1 - (speedPenalty * 1.5));
+
+                  // 機率攔截判定
+                  if (Math.random() < blockRate) {
+                    p.blocked = true;
+                    p.vx = 0;
+                    p.vy = 0;
+                    p.trappedAt = Date.now();
+                  }
+                }
+              } else {
+                // 已被攔截粒子逐漸淡出
+                p.alpha -= 0.02;
+              }
+
+              // 移除超出右側或淡出粒子
+              if (p.x > canvas.width + 10 || p.alpha <= 0) {
+                particles.splice(i, 1);
+              }
+            }
+          }
+
+          function drawScene() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const filterX = canvas.width * 0.5;
+            const filterW = currentFilter === 'hepa4' ? 32 : (currentFilter === 'hepa2' ? 22 : 14);
+
+            // 1. 繪製抽風通道背景與氣流箭頭
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 微弱氣流導引線
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+            ctx.lineWidth = 1;
+            for (let y = 30; y < canvas.height; y += 30) {
+              ctx.beginPath();
+              ctx.moveTo(0, y);
+              ctx.lineTo(canvas.width, y);
+              ctx.stroke();
+            }
+
+            // 2. 繪製中間濾材網體 (動態依濾材厚度改變)
+            const fInfo = FILTER_DATA[currentFilter];
+            ctx.fillStyle = 'rgba(30, 41, 59, 0.85)';
+            ctx.fillRect(filterX - filterW/2, 10, filterW, canvas.height - 20);
+
+            ctx.strokeStyle = fInfo.color;
+            ctx.lineWidth = 2;
+            ctx.strokeRect(filterX - filterW/2, 10, filterW, canvas.height - 20);
+
+            // 濾網內部折線紋理
+            ctx.strokeStyle = fInfo.color + 'aa';
+            ctx.lineWidth = 1.5;
+            const lines = fInfo.gridLines;
+            for (let j = 0; j < lines; j++) {
+              const lx = (filterX - filterW/2) + (filterW / lines) * j;
+              ctx.beginPath();
+              ctx.moveTo(lx, 10);
+              ctx.lineTo(lx, canvas.height - 10);
+              ctx.stroke();
+            }
+
+            // 3. 繪製粒子
+            for (let p of particles) {
+              ctx.save();
+              ctx.globalAlpha = p.alpha;
+              ctx.fillStyle = p.color;
+              ctx.shadowColor = p.color;
+              ctx.shadowBlur = p.blocked ? 2 : 6;
+
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.restore();
+            }
+
+            // 4. 右側 PMS5003 感測器進風標示
+            ctx.fillStyle = 'rgba(13, 148, 136, 0.15)';
+            ctx.fillRect(canvas.width - 24, 20, 16, canvas.height - 40);
+            ctx.strokeStyle = '#0d9488';
+            ctx.strokeRect(canvas.width - 24, 20, 16, canvas.height - 40);
+          }
+
+          // 繪製微型折線圖 (歷史濃度變化)
+          function drawChart() {
+            if (!chartCtx) return;
+            const w = chartCanvas.width;
+            const h = chartCanvas.height;
+
+            chartCtx.clearRect(0, 0, w, h);
+            chartCtx.fillStyle = '#020617';
+            chartCtx.fillRect(0, 0, w, h);
+
+            // 網格線
+            chartCtx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+            chartCtx.lineWidth = 1;
+            chartCtx.beginPath();
+            chartCtx.moveTo(0, h/2); chartCtx.lineTo(w, h/2);
+            chartCtx.stroke();
+
+            // 折線
+            const fInfo = FILTER_DATA[currentFilter];
+            const eff = fInfo.p25;
+            const targetMin = Math.round(180 * (1 - eff));
+
+            chartCtx.strokeStyle = '#38bdf8';
+            chartCtx.lineWidth = 2.5;
+            chartCtx.beginPath();
+
+            const pts = 14;
+            for (let i = 0; i < pts; i++) {
+              const x = (w / (pts - 1)) * i;
+              const val = Math.max(targetMin, 180 * Math.pow(1 - eff, (i / 4)));
+              const y = h - 10 - ((val / 180) * (h - 20));
+              if (i === 0) chartCtx.moveTo(x, y);
+              else chartCtx.lineTo(x, y);
+            }
+            chartCtx.stroke();
+          }
+
+          // 選擇濾材
+          function selectFilter(id) {
+            currentFilter = id;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+              if (btn.dataset.id === id) {
+                btn.classList.add('active-filter');
+                btn.classList.remove('border-slate-700', 'bg-slate-900/60');
+              } else {
+                btn.classList.remove('active-filter');
+                btn.classList.add('border-slate-700', 'bg-slate-900/60');
+              }
+            });
+
+            updateLCD();
+            drawChart();
+          }
+
+          // 設定風速
+          function setWindSpeed(speed) {
+            windSpeed = speed;
+            const btnLow = document.getElementById('speed-btn-low');
+            const btnHigh = document.getElementById('speed-btn-high');
+
+            if (speed === 2.0) {
+              btnLow.classList.add('active-speed');
+              btnHigh.classList.remove('active-speed');
+            } else {
+              btnHigh.classList.add('active-speed');
+              btnLow.classList.remove('active-speed');
+            }
+
+            // 更新粒子速度
+            particles.forEach(p => {
+              p.vx = (windSpeed * 1.3) + Math.random() * 0.8;
+            });
+
+            updateLCD();
+          }
+
+          // 點燃線香噴煙
+          function triggerSmoke() {
+            for (let i = 0; i < 45; i++) {
+              createParticle(Math.random() * 60);
+            }
+            // 瞬間模擬濃度上升
+            updateLCD(true);
+          }
+
+          // 暫停/繼續
+          function toggleSimulation() {
+            isRunning = !isRunning;
+            const icon = document.getElementById('icon-toggle');
+            const ind = document.getElementById('sim-status-indicator');
+            if (isRunning) {
+              icon.className = 'fa-solid fa-pause';
+              ind.textContent = '● 系統抽風中';
+              ind.className = 'text-teal-400 font-mono';
+            } else {
+              icon.className = 'fa-solid fa-play';
+              ind.textContent = '❚❚ 實驗暫停中';
+              ind.className = 'text-amber-400 font-mono';
+            }
+          }
+
+          function resetSimulation() {
+            spawnInitialParticles();
+            updateLCD();
+            drawChart();
+          }
+
+          // 更新 Arduino LCD 數據
+          function updateLCD(isSpike = false) {
+            const fInfo = FILTER_DATA[currentFilter];
+            const penalty = windSpeed === 3.8 ? 0.05 : 0;
+
+            const eff = Math.round((fInfo.p25 - penalty) * 100);
+            const baseMultiplier = isSpike ? 2.5 : 1;
+
+            const pm1 = Math.round(Math.max(2, (180 * (1 - fInfo.p1)) * baseMultiplier));
+            const pm25 = Math.round(Math.max(4, (180 * (1 - fInfo.p25 + penalty)) * baseMultiplier));
+            const pm10 = Math.round(Math.max(8, (220 * (1 - fInfo.p10)) * baseMultiplier));
+
+            document.getElementById('lcd-filter').textContent = fInfo.name.toUpperCase();
+            document.getElementById('lcd-pm1').textContent = String(pm1).padStart(3, '0') + ' ug/m3';
+            document.getElementById('lcd-pm25').textContent = String(pm25).padStart(3, '0') + ' ug/m3';
+            document.getElementById('lcd-pm10').textContent = String(pm10).padStart(3, '0') + ' ug/m3';
+            document.getElementById('lcd-eff').textContent = eff + '%';
+
+            // 更新下方解說文字
+            document.getElementById('expl-title').textContent = '💡 濾材科學原理即時分析 — ' + fInfo.title + '：';
+            document.getElementById('expl-text').textContent = fInfo.desc;
+          }
+
+          // 切換分頁 (沙盒 vs 闖關)
+          function switchGameTab(mode) {
+            const tabSim = document.getElementById('game-mode-sim');
+            const tabQuiz = document.getElementById('game-mode-quiz');
+            const btnSim = document.getElementById('tab-btn-sim');
+            const btnQuiz = document.getElementById('tab-btn-quiz');
+
+            if (mode === 'sim') {
+              tabSim.classList.remove('hidden');
+              tabQuiz.classList.add('hidden');
+              btnSim.className = 'px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-teal-600 text-white shadow';
+              btnQuiz.className = 'px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-300 hover:text-white';
+            } else {
+              tabSim.classList.add('hidden');
+              tabQuiz.classList.remove('hidden');
+              btnQuiz.className = 'px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-teal-600 text-white shadow';
+              btnSim.className = 'px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-300 hover:text-white';
+              loadQuiz();
+            }
+          }
+
+          // 題目庫
+          const QUIZ_QUESTIONS = [
+            {
+              q: '【關卡 1：校園掃除的大顆粒揚塵】國小校園大掃除或操場塵土飛揚，空氣中主要是粒徑約 10 微米的粗懸浮微粒 (PM10)。此時若配戴一般醫療口罩，主要能發揮什麼效果？',
+              options: [
+                '能良好阻隔 PM10 大顆粒粉塵與飛沫 (防護率約 80% 以上)',
+                '完全沒有任何防護效果',
+                '連空氣分子也無法穿透而窒息',
+                '比專用防毒面具還要高科技'
+              ],
+              answer: 0,
+              explain: '正確！一般醫療口罩主要針對 3~5 微米以上的飛沫與大微粒 (PM10)，大掃除時配戴能有效阻擋塵埃揚起進入呼吸道！'
+            },
+            {
+              q: '【關卡 2：密閉教室清淨機實測】在教案單元二中，學生在密閉教室點香使 PM2.5 飆高至 150 以上，為何清淨機運轉 10 分鐘內要「每 30 秒記錄一次濃度，共取樣 20 筆」繪製折線圖？',
+              options: [
+                '為了消磨上課時間',
+                '透過連續多次量測觀察「微粒降低速率（斜率）」並減少單次測量誤差',
+                '只要量測最後第 10 分鐘的一次數字就足夠了',
+                '因為清淨機每 30 秒會自動關機一次'
+              ],
+              answer: 1,
+              explain: '答得太棒了！符合課綱 INc-Ⅲ-4（多次測量減少誤差）與 INd-Ⅲ-2（測量與了解改變的快慢），透過 Excel 連續折線圖能清晰看出不同濾材的過濾速率差異！'
+            },
+            {
+              q: '【關卡 3：微細煙霧超極限挑戰】根據本教案實測數據，面對小於 1.0 微米（PM1.0）的超微細燃燒粒子，哪一種濾材表現「最差」、穿透率最高？',
+              options: [
+                'HEPA 4cm 摺疊濾網',
+                '一般醫療口罩與活性碳濾網 (PM1 過濾率極低，穿透嚴重)',
+                'N95 防護口罩',
+                'HEPA 2cm 濾網'
+              ],
+              answer: 1,
+              explain: '完全正確！本教案實測最關鍵的重大發現：醫療口罩與活性碳對 PM1 的過濾效能極差，超細煙霧微粒容易直接穿透，必須倚賴 HEPA 摺疊結構才能深層攔截！'
+            },
+            {
+              q: '【關卡 4：自組比較機與風速控制】在單元三自製 Arduino 比較機中，學生透過 PWM 控制風扇風速（2.0 m/s 與 3.8 m/s），為什麼風速是重要的實驗變因？',
+              options: [
+                '風速越大單位時間通過的微粒越多，考驗濾材的容塵能力與穿透阻抗',
+                '風速只是聲音大小不同，對粒子完全沒有物理影響',
+                '風速調快會讓 Arduino 晶片運算變慢',
+                '低風速時微粒會自動被磁力吸引'
+              ],
+              answer: 0,
+              explain: '賓果！風速決定了通過濾網的流體動能與單位時間粒子量，風速過大時，薄型濾材更容易被高衝擊微粒穿透，這也是比較機實測設計中最精彩的變因控制！'
+            }
+          ];
+
+          let currentQuizIndex = 0;
+          let quizScore = 0;
+
+          function loadQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-result-box').classList.add('hidden');
+            renderQuizCard();
+          }
+
+          function renderQuizCard() {
+            const container = document.getElementById('quiz-card-container');
+            const progress = document.getElementById('quiz-progress');
+            if (currentQuizIndex >= QUIZ_QUESTIONS.length) {
+              showQuizResult();
+              return;
+            }
+
+            const qData = QUIZ_QUESTIONS[currentQuizIndex];
+            progress.textContent = `關卡 ${currentQuizIndex + 1} / ${QUIZ_QUESTIONS.length}`;
+
+            let html = `
+              <div class="p-4 bg-slate-900 rounded-xl border border-slate-700/80 space-y-4">
+                <h4 class="text-sm font-bold text-white leading-relaxed">${qData.q}</h4>
+                <div class="space-y-2">
+            `;
+
+            qData.options.forEach((opt, idx) => {
+              html += `
+                <button onclick="handleAnswer(${idx})" class="quiz-opt-btn w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-xs text-slate-200 transition flex items-center justify-between group">
+                  <span>${String.fromCharCode(65 + idx)}. ${opt}</span>
+                  <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 transition text-teal-400"></i>
+                </button>
+              `;
+            });
+
+            html += `
+                </div>
+                <div id="quiz-feedback" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>
+                <div id="quiz-next-btn-box" class="hidden pt-2 flex justify-end">
+                  <button onclick="nextQuestion()" class="px-4 py-2 bg-teal-600 hover:bg-teal-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5">
+                    <span>下一關</span> <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            `;
+            container.innerHTML = html;
+          }
+
+          function handleAnswer(selectedIdx) {
+            const qData = QUIZ_QUESTIONS[currentQuizIndex];
+            const isCorrect = selectedIdx === qData.answer;
+            const buttons = document.querySelectorAll('.quiz-opt-btn');
+
+            buttons.forEach((btn, idx) => {
+              btn.disabled = true;
+              if (idx === qData.answer) {
+                btn.className = 'w-full text-left p-3 rounded-lg bg-emerald-950/80 border-2 border-emerald-500 text-xs text-emerald-200 font-bold flex items-center justify-between';
+              } else if (idx === selectedIdx && !isCorrect) {
+                btn.className = 'w-full text-left p-3 rounded-lg bg-rose-950/80 border-2 border-rose-500 text-xs text-rose-200 font-bold flex items-center justify-between';
+              } else {
+                btn.className = 'w-full text-left p-3 rounded-lg bg-slate-900/50 border border-slate-800 text-xs text-slate-500 opacity-60';
+              }
+            });
+
+            const fb = document.getElementById('quiz-feedback');
+            fb.classList.remove('hidden');
+            if (isCorrect) {
+              quizScore += 25;
+              fb.className = 'p-3 rounded-lg text-xs bg-emerald-900/40 border border-emerald-500/50 text-emerald-200';
+              fb.innerHTML = '<strong class="font-bold flex items-center gap-1"><i class="fa-solid fa-circle-check text-emerald-400"></i> 答對了！</strong> ' + qData.explain;
+            } else {
+              fb.className = 'p-3 rounded-lg text-xs bg-rose-900/40 border border-rose-500/50 text-rose-200';
+              fb.innerHTML = '<strong class="font-bold flex items-center gap-1"><i class="fa-solid fa-circle-xmark text-rose-400"></i> 差一點點！</strong> ' + qData.explain;
+            }
+
+            document.getElementById('quiz-next-btn-box').classList.remove('hidden');
+          }
+
+          function nextQuestion() {
+            currentQuizIndex++;
+            renderQuizCard();
+          }
+
+          function showQuizResult() {
+            document.getElementById('quiz-card-container').innerHTML = '';
+            const resBox = document.getElementById('quiz-result-box');
+            resBox.classList.remove('hidden');
+
+            const title = document.getElementById('result-title');
+            const desc = document.getElementById('result-desc');
+
+            if (quizScore >= 100) {
+              title.textContent = '🌟 科技素養特優 A 級達人！';
+              desc.textContent = `完美總分：${quizScore} 分！你已徹底掌握濾材微粒防護機制與比較機科學探究精神！`;
+            } else if (quizScore >= 75) {
+              title.textContent = '👍 科技素養優良 B 級！';
+              desc.textContent = `總分：${quizScore} 分！具備極佳的空氣清淨科學概念，表現十分出色！`;
+            } else {
+              title.textContent = '💪 科技素養持續精進！';
+              desc.textContent = `總分：${quizScore} 分！建議回到比較機動態沙盒多做幾次濾材變因實測，再回來挑戰一次喔！`;
+            }
+          }
+
+          function restartQuiz() {
+            loadQuiz();
+          }
+
+          // 頁面載入完成後啟動模擬器
+          window.addEventListener('DOMContentLoaded', () => {
+            initSimulation();
+          });
+        </script>
+
+        <!-- 8. 素養導向評量檢核表 (Rubrics) -->
         <section id="rubrics" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
           <div class="flex items-center space-x-3 mb-6">
             <span class="w-2.5 h-8 bg-brand-600 rounded-full"></span>
-            <h3 class="text-2xl font-bold text-slate-900">七、素養導向教學評量檢核表 (A~E 五級等第)</h3>
+            <h3 class="text-2xl font-bold text-slate-900">八、素養導向教學評量檢核表 (A~E 五級等第)</h3>
           </div>
 
           <div class="overflow-x-auto">
@@ -645,7 +1416,7 @@
         <section id="feedback" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
           <div class="flex items-center space-x-3 mb-6">
             <span class="w-2.5 h-8 bg-brand-600 rounded-full"></span>
-            <h3 class="text-2xl font-bold text-slate-900">八、教學成果、反思與推廣特色</h3>
+            <h3 class="text-2xl font-bold text-slate-900">九、教學成果、反思與推廣特色</h3>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
